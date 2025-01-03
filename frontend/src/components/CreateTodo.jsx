@@ -19,8 +19,8 @@ export function CreateTodo() {
       if (response.ok) {
         const result = await response.json();
         console.log('Todo added successfully:', result);
-        setTitle(''); // Clear the title input
-        setDescription(''); // Clear the description input
+        setTitle(''); 
+        setDescription('');
       } else {
         console.error('Failed to add todo:', response.statusText);
       }

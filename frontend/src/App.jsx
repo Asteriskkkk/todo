@@ -13,7 +13,7 @@ function App() {
           throw new Error(`HTTP error! Status: ${res.status}`);
         }
         const json = await res.json();
-        setTodos(json); // Directly set the state with the array
+        setTodos(json);
       })
       .catch((error) => console.error('Error fetching todos:', error));
   }, []);
