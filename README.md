@@ -19,7 +19,7 @@ This Todo app allows users to create, update, and delete tasks. It provides dyna
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+<img width="1470" alt="image" src="https://github.com/user-attachments/assets/0346b6d0-f372-4da7-891c-80d331c5d046" />
 
 
 ## Run Locally
