@@ -30,23 +30,50 @@ export function Todos({ todos, setTodos }) {
       console.error('Error marking todo as complete:', error);
     }
   };
+  const handleDelete = async (id) => {
+    try {
+        const response = await fetch(`http://localhost:3000/todo/${id}`, {
+            method: 'DELETE',
+        });
+  
+      if (response.ok) {
+        setTodos((prevTodos) => prevTodos.filter((todo) => todo._id !== id));
+      } else {
+        console.error('Failed to delete todo');
+      }
+    } catch (error) {
+      console.error('Error deleting todo:', error);
+    }
+  };
 
   return (
     <ul className="todos">
-      {todos.map((todo, index) => (
+      {todos.map((todo) => (
         <li key={todo._id} className="todo-item"> {/* Use todo._id for the key */}
           <div className="todo-content">
             <h1 className="todo-title">{todo.title}</h1>
             <h2 className="todo-description">{todo.description}</h2>
           </div>
-          <button
-            className="todo-button"
-            onClick={() => handleMarkComplete(todo._id, todo.completed)} // Pass the correct ID and completed status
-          >
-            {todo.completed ? 'Completed' : 'Mark as Complete'}
-          </button>
+          <div className="todo-actions">
+            {/* Mark as Complete Button */}
+            <button
+              className="complete-button"
+              onClick={() => handleMarkComplete(todo._id, todo.completed)} // Pass the correct ID and completed status
+            >
+              {todo.completed ? 'Completed' : 'Mark as Complete'}
+            </button>
+  
+            {/* Remove Button */}
+            <button
+              className="delete-button"
+              onClick={() => handleDelete(todo._id)}
+            >
+              Remove
+            </button>
+          </div>
         </li>
       ))}
     </ul>
   );
+  
 }

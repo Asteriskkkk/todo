@@ -88,7 +88,23 @@ app.put('/completed',async (req,res)=>{
       res.status(500).json({ message: "Internal Server Error", error: error.message });
   }
 
-}) 
+})
+
+app.delete('/todo/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const deletedTodo = await todo.findByIdAndDelete(id);
+
+    if (!deletedTodo) {
+      return res.status(404).json({ message: 'Todo not found' });
+    }
+
+    res.status(200).json({ message: 'Todo deleted successfully', id });
+  } catch (error) {
+    res.status(500).json({ message: 'Error deleting todo', error });
+  }
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
