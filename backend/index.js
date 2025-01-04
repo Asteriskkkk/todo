@@ -12,6 +12,15 @@ app.use(cors());
 app.post('/todo',async (req,res) =>{
     const payload = req.body;
     const parsedPayload = createTodo.safeParse(payload);
+
+    if (!payload.title || payload.title.trim() === '') {
+      return res.status(400).json({ msg: 'Title cannot be empty' });
+    }
+  
+    if (!payload.description || payload.description.trim() === '') {
+      return res.status(400).json({ msg: 'Description cannot be empty' });
+    }
+
     if(!parsedPayload.success){
       res.status(411).json({
           msg: "you sent the wrong inputs"
@@ -26,7 +35,9 @@ app.post('/todo',async (req,res) =>{
     })
   
     res.json({
-      msg: "todo is created"
+      title: payload.title,
+      description: payload.description,
+      completed: false
     })
 })
 
@@ -35,6 +46,20 @@ app.get('/todos', async(req, res) => {
   res.send(todos);
 })
 
+app.get('/greeting', (req, res) => {
+  const hours = new Date().getHours();
+  let greeting = '';
+
+  if (hours < 12) {
+    greeting = 'Good Morning';
+  } else if (hours < 18) {
+    greeting = 'Good Afternoon';
+  } else {
+    greeting = 'Good Evening';
+  }
+
+  res.json({ greeting });
+});
 
 app.put('/completed',async (req,res)=>{
     const payload = req.body;
@@ -57,7 +82,7 @@ app.put('/completed',async (req,res)=>{
           return res.status(404).json({ message: "Todo not found" });
       }
 
-      res.status(200).json({ message: "Todo updated successfully", todo: updatedTodo });
+      res.status(200).json({ todo: updatedTodo });
   } catch (error) {
       console.error("Error updating todo:", error);
       res.status(500).json({ message: "Internal Server Error", error: error.message });

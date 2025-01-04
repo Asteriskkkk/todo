@@ -1,0 +1,156 @@
+/* General Reset */
+* {
+  margin: 2px;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #e0eafc, #cfdef3);
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* App Container */
+#root {
+  width: 100%;
+  max-width: fit-content;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* CreateTodo Component */
+.create-todo {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.create-todo input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  background: #f9f9f9;
+  transition: border-color 0.3s;
+}
+
+.create-todo input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.create-todo button {
+  padding: 12px 20px;
+  border: none;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.create-todo button:hover {
+  background: linear-gradient(135deg, #0056b3, #004494);
+}
+
+/* Todos Component */
+.todos {
+  list-style-type: none;
+  padding: 0;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.todo-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.todo-item p {
+  margin: 0;
+  flex: 1;
+  font-size: 16px;
+  color: #555;
+}
+
+.todo-item button {
+  padding: 6px 12px;
+  border: none;
+  background: #1cd8b0;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.todo-item button:hover {
+  background: #1cd8b0;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  #root {
+    padding: 15px;
+  }
+
+  .create-todo input {
+    font-size: 14px;
+  }
+
+  .create-todo button {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+
+  .todo-item p {
+    font-size: 14px;
+  }
+
+  .todo-item button {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+}
+
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  margin: 20px 0;
+}
+
+h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #333;
+  margin: 15px 0;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
+}
+

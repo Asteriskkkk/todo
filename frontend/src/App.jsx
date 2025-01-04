@@ -13,15 +13,26 @@ function App() {
           throw new Error(`HTTP error! Status: ${res.status}`);
         }
         const json = await res.json();
-        setTodos(json);
+        setTodos(json); 
       })
       .catch((error) => console.error('Error fetching todos:', error));
   }, []);
 
+
+  const [greeting, setGreeting] = useState('');
+  useEffect(() => {
+    fetch('http://localhost:3000/greeting')
+      .then((response) => response.json())
+      .then((data) => setGreeting(data.greeting))
+      .catch((error) => console.error('Error fetching greeting:', error));
+  }, []);
+
   return (
     <div>
-      <CreateTodo></CreateTodo>
-      <Todos todos={todos}></Todos>
+      <h1>TODO APP</h1>
+      <h2>{greeting}</h2>
+      <CreateTodo setTodos= {setTodos} todos= {todos}></CreateTodo>
+      <Todos todos={todos} setTodos={setTodos} />
     </div>
   )
 }

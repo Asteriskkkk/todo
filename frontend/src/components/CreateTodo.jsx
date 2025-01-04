@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-export function CreateTodo() {
+export function CreateTodo({ setTodos, todos }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
   const handleAddTodo = async () => {
-    const newTodo = {title, description};
+    const newTodo = { title, description };
 
     try {
       const response = await fetch('http://localhost:3000/todo', {
@@ -15,11 +15,10 @@ export function CreateTodo() {
         },
         body: JSON.stringify(newTodo),
       });
-
       if (response.ok) {
         const result = await response.json();
-        console.log('Todo added successfully:', result);
-        setTitle(''); 
+        setTodos([...todos, result]); // Update the todos list with the new todo
+        setTitle('');
         setDescription('');
       } else {
         console.error('Failed to add todo:', response.statusText);
@@ -27,10 +26,11 @@ export function CreateTodo() {
     } catch (error) {
       console.error('Error while adding todo:', error);
     }
-  };
+  };  
+  
 
   return (
-    <div>
+    <div className="create-todo">
       <input
         type="text"
         placeholder="Title"
@@ -45,6 +45,7 @@ export function CreateTodo() {
         onChange={(e) => setDescription(e.target.value)}
         required
       />
+      
       <button onClick={handleAddTodo}>Add Todo</button>
     </div>
   );
