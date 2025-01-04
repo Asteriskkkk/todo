@@ -2,12 +2,7 @@
 
 This Todo app allows users to create, update, and delete tasks. It provides dynamic greetings based on the time of day and stores data in a MongoDB database. Users can mark tasks as complete, providing an organized and efficient way to manage personal tasks and track progress.
 
-
-
-
-
-
-
+Live Frontend link(backend not deployed): https://todo-hlpw0ze6x-asteriskkkks-projects.vercel.app/
 ## Features
 
 - Create and manage tasks with title and description.
