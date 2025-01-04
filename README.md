@@ -1,8 +1,3 @@
-
-# Project Title
-
-A brief description of what this project does and who it's for
-
 # TODO APP
 
 This Todo app allows users to create, update, and delete tasks. It provides dynamic greetings based on the time of day and stores data in a MongoDB database. Users can mark tasks as complete, providing an organized and efficient way to manage personal tasks and track progress.
